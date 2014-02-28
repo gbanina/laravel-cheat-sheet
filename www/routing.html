@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Laravel - Cheet Sheet</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="css/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.red.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+			<link rel="stylesheet" href="assets/css/foundation.min.css" />
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="assets/css/page.css" />
+
+    </head>
+    <body>
+        
+    <div data-role="page" data-theme='b'>
+	
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
+            <h1><img src="logo-head.png"></img>  Laravel Cheet Sheet</h1>
+        </div>
+        
+        <div data-role="content">   
+		
+			<div class="row full-width">
+
+			<h4>Routing </h4>
+			<pre class="prettyprint lang-php"></p>
+Route::get('foo', function(){});
+Route::get('foo', 'ControllerName@function');
+Route::controller('foo', 'FooController');
+			</pre>
+
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Triggering Errors</h6>
+			<pre class="prettyprint lang-php">App::abort(404);
+App::missing(function($exception){});
+throw new NotFoundHttpException;
+			</pre>
+			</div>
+
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Route Parameters</h6>
+			<pre class="prettyprint lang-php">Route::get('foo/{bar}', function($bar){});
+Route::get('foo/{bar?}', function($bar = 'bar'){});
+			</pre>
+			</div>
+<div data-role='collapsible' data-content-theme='b'>
+			<h6>HTTP Verbs</h6>
+			<pre class="prettyprint lang-php">Route::any('foo', function(){});
+Route::post('foo', function(){});
+Route::put('foo', function(){});
+Route::patch('foo', function(){});
+Route::delete('foo', function(){});
+// RESTful actions
+Route::resource('foo', 'FooController');
+			</pre>
+			</div>
+
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Secure Routes</h6>
+			<pre class="prettyprint lang-php">Route::get('foo', array('https', function(){}));</pre>
+			</div>
+
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Route Constraints</h6>
+			<pre class="prettyprint lang-php">Route::get('foo/{bar}', function($bar){})
+	->where('bar', '[0-9]+');
+Route::get('foo/{bar}/{baz}', function($bar, $baz){})
+	->where(array('bar' => '[0-9]+', 'baz' => '[A-Za-z]'))
+			</pre>
+			
+			<pre class="prettyprint lang-php">// Set a pattern to be used across routes
+			Route::pattern('bar', '[0-9]+')
+			</pre>
+			</div>
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Filters</h6>
+			<pre class="prettyprint lang-php">// Declare an auth filter
+Route::filter('auth', function(){});
+// Register a class as a filter
+Route::filter('foo', 'FooFilter');
+Route::get('foo', array('before' => 'auth', function(){}));
+// Routes in this group are guarded by the 'auth' filter
+Route::get('foo', array('before' => 'auth', function(){}));
+Route::group(array('before' => 'auth'), function(){});
+// Pattern filter
+Route::when('foo/*', 'foo');
+// HTTP verb pattern
+Route::when('foo/*', 'foo', array('post'));
+			</pre>
+			</div>
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Named Routes</h6>
+			<pre class="prettyprint lang-php">Route::currentRouteName();
+				Route::get('foo/bar', array('as' => 'foobar', function(){}));
+			</pre>
+			</div>
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Route Prefixing</h6>
+			<pre class="prettyprint lang-php">// This route group will carry the prefix 'foo'
+				Route::group(array('prefix' => 'foo'), function(){})
+			</pre>
+			</div>
+
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Sub-Domain Routing</h6>
+			<pre class="prettyprint lang-php">// {sub} will be passed to the closure
+				Route::group(array('domain' => '{sub}.example.com'), function(){});
+			</pre>
+			</div>
+	</div>
+		
+	        	        
+		</div>
+		
+
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" data-icon="home">Laravel</a></li>
+					<li><a href="#" data-icon="cogs">Artisan</a></li>
+					<li><a href="#" data-icon="user">About</a></li>
+				</ul>
+			</div>
+		</div>
+
+    </div>
+    
+		<script src="assets/js/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	
+    </body>
+</html>
