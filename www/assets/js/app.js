@@ -6,8 +6,8 @@ $('.comments-toggle').on('click', function(event){
 // Call prettprint manually
 prettyPrint();
 
-// For ajax calls
-$(document).ready(function(){ prettyPrint(); }) 
+// For ajax calls + randomize to clear cache
+$(document).ready(function(){ var i = Math.random(); prettyPrint(); })
 
 // Shine up the HTML:: calls
 var $html_elements = $("span.pln:contains('HTML')").removeClass('pln').addClass('typ');
