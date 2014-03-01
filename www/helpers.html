@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Laravel - Cheet Sheet</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="css/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.red.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+			<link rel="stylesheet" href="assets/css/foundation.min.css" />
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="assets/css/page.css" />
+
+    </head>
+    <body>
+        
+    <div data-role="page" data-theme='b'>
+	
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
+            <h1><img src="logo-head.png"></img>  Laravel Cheet Sheet</h1>
+        </div>
+        
+        <div data-role="content">   
+			<div class="row full-width">
+
+<h2>Helpers</h2>
+
+
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Arrays</h6>
+			<pre class="prettyprint lang-php">array_add($array, 'key', 'value');
+array_build($array, function(){});
+array_divide($array);
+array_dot($array);
+array_except($array, array('key'));
+array_fetch($array, 'key');
+array_first($array, function($key, $value){}, $default);
+// Strips keys from the array
+array_flatten($array);
+array_forget($array, 'foo');
+// Dot notation
+array_forget($array, 'foo.bar');
+array_get($array, 'foo', 'default');
+array_get($array, 'foo.bar', 'default');
+array_only($array, array('key'));
+// Return array of key => values
+array_pluck($array, 'key');
+// Return and remove 'key' from array
+array_pull($array, 'key');
+array_set($array, 'key', 'value');
+// Dot notation
+array_set($array, 'key.subkey', 'value');
+array_sort($array, function(){});
+// First element of an array
+head($array);
+// Last element of an array
+last($array);
+			</pre>
+			</div>
+			
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Paths</h6>
+			<pre class="prettyprint lang-php">app_path();
+public_path();
+// App root path
+base_path();
+storage_path();
+			</pre>
+			</div>
+			
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Strings</h6>
+			<pre class="prettyprint lang-php">
+camel_case($value);
+class_basename($class);
+// Escape a string
+e('&lt;html&gt;');
+starts_with('Foo bar.', 'Foo');
+ends_with('Foo bar.', 'bar.');
+snake_case('fooBar');
+str_contains('Hello foo bar.', 'foo');
+// Result: foo/bar/
+str_finish('foo/bar', '/');
+str_is('foo*', 'foobar');
+str_plural('car');
+str_random(25);
+str_singular('cars');
+// Result: FooBar
+studly_case('foo_bar');
+trans('foo.bar');
+trans_choice('foo.bar', $count);
+			</pre>
+			</div>
+			
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>URLs and Links</h6>
+			<pre class="prettyprint lang-php">action('FooController@method', $parameters);
+link_to('foo/bar', $title, $attributes, $secure);
+link_to_asset('img/foo.jpg', $title, $attributes, $secure);
+link_to_route('route.name', $title, $parameters, $attributes);
+link_to_action('FooController@method', $title, $params, $attrs);
+// HTML Link
+asset('img/photo.jpg', $title, $attributes);
+// HTTPS link
+secure_asset('img/photo.jpg', $title, $attributes);
+secure_url('path', $parameters);
+route($route, $parameters, $absolute = true);
+url('path', $parameters = array(), $secure = null);
+		</pre>
+		</div>
+		
+		<div data-role='collapsible' data-content-theme='b'>
+		<h6>Miscellaneous</h6>
+		<pre class="prettyprint lang-php">
+csrf_token();
+dd($value);
+value(function(){ return 'bar'; });
+with(new Foo)->chainedMethod();
+			</pre>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+			
+			
+			
+			</div>	        
+		</div>
+		
+
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Laravel</a></li>
+					<li><a href="shell.html" data-icon="cogs">Shell</a></li>
+					<li><a href="about.html" data-icon="user">About</a></li>
+				</ul>
+			</div>
+		</div>
+
+    </div>
+    
+		<script src="assets/js/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	
+    </body>
+</html>

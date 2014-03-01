@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Laravel - Cheet Sheet</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="css/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.red.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+			<link rel="stylesheet" href="assets/css/foundation.min.css" />
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="assets/css/page.css" />
+
+    </head>
+    <body>
+        
+    <div data-role="page" data-theme='b'>
+	
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
+            <h1><img src="logo-head.png"></img>  Laravel Cheet Sheet</h1>
+        </div>
+        
+        <div data-role="content">   
+			<div class="row full-width">
+
+			
+		<h2>Eloquent</h2>
+			<pre class="prettyprint lang-php">Model::create(array('key' => 'value'));
+// Fill a model with an array of attributes, beware of mass assignment!
+Model::fill($attributes);
+Model::destroy(1);
+Model::all();
+Model::find(1);
+// Find using dual primary key
+Model::find(array('first', 'last'));
+// Throw an exception if the lookup fails
+Model::findOrFail(1);
+// Find using dual primary key and throw exception if the lookup fails
+Model::findOrFail(array('first', 'last'));
+Model::where('foo', '=', 'bar')->get();
+Model::where('foo', '=', 'bar')->first();
+// Throw an exception if the lookup fails
+Model::where('foo', '=', 'bar')->firstOrFail();
+Model::where('foo', '=', 'bar')->count();
+Model::where('foo', '=', 'bar')->delete();
+Model::whereRaw('foo = bar and cars = 2', array(20))->get();
+Model::remember(5)->get();
+Model::remember(5, 'cache-key-name')->get();
+Model::on('connection-name')->find(1);
+Model::with('relation')->get();
+Model::all()->take(10);
+Model::all()->skip(10);
+			</pre>
+
+						<div data-role='collapsible' data-content-theme='b'>
+			<h6>Soft Delete</h6>
+			<pre class="prettyprint lang-php">Model::withTrashed()->where('cars', 2)->get();
+Model::withTrashed()->where('cars', 2)->restore();
+Model::where('cars', 2)->forceDelete();
+Model::onlyTrashed()->where('cars', 2)->get();
+			</pre>
+			</div>
+			
+						<div data-role='collapsible' data-content-theme='b'>
+			<h6>Events</h6>
+			<pre class="prettyprint lang-php">Model::creating(function($model){});
+Model::created(function($model){});
+Model::updating(function($model){});
+Model::updated(function($model){});
+Model::saving(function($model){});
+Model::saved(function($model){});
+Model::deleting(function($model){});
+Model::deleted(function($model){});
+Model::observe(new FooObserver);
+			</pre>
+			</div>
+			
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Eloquent Configuration</h6>
+			<pre class="prettyprint lang-php">Eloquent::unguard();
+// Disables mass assignment exceptions from being thrown from model inserts and updates
+Eloquent::reguard();
+// Renables any ability to throw mass assignment exceptions
+			</pre>
+			</div>
+
+			
+			
+			
+			
+			</div>	        
+		</div>
+		
+
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Laravel</a></li>
+					<li><a href="shell.html" data-icon="cogs">Shell</a></li>
+					<li><a href="about.html" data-icon="user">About</a></li>
+				</ul>
+			</div>
+		</div>
+
+    </div>
+    
+		<script src="assets/js/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	
+    </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Laravel - Cheet Sheet</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="css/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.red.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+			<link rel="stylesheet" href="assets/css/foundation.min.css" />
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="assets/css/page.css" />
+
+    </head>
+    <body>
+        
+    <div data-role="page" data-theme='b'>
+	
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
+            <h1><img src="logo-head.png"></img>  Laravel Cheet Sheet</h1>
+        </div>
+        
+        <div data-role="content">   
+			<div class="row full-width">
+
+			
+			
+		<h2>Database</h2>
+			<pre class="prettyprint lang-php">
+DB::connection('connection_name');
+DB::statement('drop table users');
+DB::listen(function($sql, $bindings, $time){ code_here; });
+DB::transaction(function(){ transaction_code_here; });
+// Cache a query for $time minutes
+DB::table('users')->remember($time)->get();
+// Escape raw input
+DB::raw('sql expression here');
+			</pre>
+			
+						<div data-role='collapsible' data-content-theme='b'>
+			<h6>Selects</h6>
+			<pre class="prettyprint lang-php">DB::table('name')->get();
+DB::table('name')->distinct()->get();
+DB::table('name')->select('column as column_alias')->get();
+DB::table('name')->where('name', '=', 'John')->get();
+DB::table('name')->whereBetween('column', array(1, 100))->get();
+DB::table('name')->whereIn('column', array(1, 2, 3))->get();
+DB::table('name')->whereNotIn('column', array(1, 2, 3))->get();
+DB::table('name')->whereNull('column')->get();
+DB::table('name')->whereNotNull('column')->get();
+DB::table('name')->groupBy('column')->get();
+DB::table('name')->orderBy('column')->get();
+DB::table('name')->having('count', '>', 100)->get();
+DB::table('name')->skip(10)->take(5)->get();
+DB::table('name')->first();
+DB::table('name')->pluck('column');
+DB::table('name')->lists('column');
+// Joins
+DB::table('name')->join('table', 'name.id', '=', 'table.id')
+    ->select('name.id', 'table.email');
+			</pre>
+			</div>
+						<div data-role='collapsible' data-content-theme='b'>
+			<h6>Inserts, Updates, Deletes</h6>
+			<pre class="prettyprint lang-php">DB::table('name')->insert(array('name' => 'John', 'email' => 'john@example.com'));
+DB::table('name')->insertGetId(array('name' => 'John', 'email' => 'john@example.com'));
+// Batch insert
+DB::table('name')->insert(
+	array('name' => 'John', 'email' => 'john@example.com')
+	array('name' => 'James', 'email' => 'james@example.com')
+);
+// Update an entry
+DB::table('name')->where('name', '=', 'John')
+	->update(array('email' => 'john@example2.com'));
+// Delete everything from a table
+DB::table('name')->delete();
+// Delete specific records
+DB::table('name')->where('id', '>', '10')->delete();
+DB::table('name')->truncate();
+			</pre>
+			</div>
+			
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Aggregates</h6>
+			<pre class="prettyprint lang-php">DB::table('name')->count();
+DB::table('name')->max('column');
+DB::table('name')->min('column');
+DB::table('name')->avg('column');
+DB::table('name')->sum('column');
+DB::table('name')->increment('column');
+DB::table('name')->increment('column', $amount);
+DB::table('name')->decrement('column');
+DB::table('name')->decrement('column', $amount);
+			</pre>
+			</div>
+						<div data-role='collapsible' data-content-theme='b'>
+			<h6>Raw Expressions</h6>
+			<pre class="prettyprint lang-php">DB::select('select * from users where id = ?', array('value'));
+DB::table('name')->select(DB::raw('count(*) as count, column2'))->get();
+			</pre>
+			</div>
+
+			
+			
+			
+			
+			</div>	        
+		</div>
+		
+
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Laravel</a></li>
+					<li><a href="shell.html" data-icon="cogs">Shell</a></li>
+					<li><a href="about.html" data-icon="user">About</a></li>
+				</ul>
+			</div>
+		</div>
+
+    </div>
+    
+		<script src="assets/js/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	
+    </body>
+</html>

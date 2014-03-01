@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Laravel - Cheet Sheet</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="css/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.red.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+			<link rel="stylesheet" href="assets/css/foundation.min.css" />
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="assets/css/page.css" />
+
+    </head>
+    <body>
+        
+    <div data-role="page" data-theme='b'>
+	
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
+            <h1><img src="logo-head.png"></img>  Laravel Cheet Sheet</h1>
+        </div>
+        
+        <div data-role="content">   
+			<div class="row full-width">
+
+			
+<h2>Input</h2>
+			<pre class="prettyprint lang-php">Input::get('key');
+// Default if the key is missing
+Input::get('key', 'default');
+Input::has('key');
+Input::all();
+// Only retrieve 'foo' and 'bar' when getting input
+Input::only('foo', 'bar');
+// Disregard 'foo' when getting input
+Input::except('foo');
+			</pre>
+
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Session Input (flash)</h6>
+			<pre class="prettyprint lang-php">// Flash input to the session
+Input::flash();
+Input::flashOnly('foo', 'bar');
+Input::flashExcept('foo', 'baz');
+Input::old('key','default_value');
+			</pre>
+			</div>
+
+			<div data-role='collapsible' data-content-theme='b'>
+			<h6>Files</h6>
+			<pre class="prettyprint lang-php">// Use a file that's been uploaded
+Input::file('filename');
+// Determine if a file was uploaded
+Input::hasFile('filename');
+// Access file properties
+Input::file('name')->getRealPath();
+Input::file('name')->getClientOriginalName();
+Input::file('name')->getClientOriginalExtension();
+Input::file('name')->getSize();
+Input::file('name')->getMimeType();
+// Move an uploaded file
+Input::file('name')->move($destinationPath);
+// Move an uploaded file
+Input::file('name')->move($destinationPath, $fileName);
+			</pre>
+			</div>
+
+			
+			
+			
+			
+			</div>	        
+		</div>
+		
+
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Laravel</a></li>
+					<li><a href="shell.html" data-icon="cogs">Shell</a></li>
+					<li><a href="about.html" data-icon="user">About</a></li>
+				</ul>
+			</div>
+		</div>
+
+    </div>
+    
+		<script src="assets/js/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	
+    </body>
+</html>
