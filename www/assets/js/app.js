@@ -6,6 +6,9 @@ $('.comments-toggle').on('click', function(event){
 // Call prettprint manually
 prettyPrint();
 
+// For ajax calls
+$(document).ready(function(){ prettyPrint(); }) 
+
 // Shine up the HTML:: calls
 var $html_elements = $("span.pln:contains('HTML')").removeClass('pln').addClass('typ');
 var $url_elements = $("span.pln:contains('URL')").removeClass('pln').addClass('typ');
