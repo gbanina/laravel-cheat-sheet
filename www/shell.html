@@ -37,22 +37,23 @@
             <a href="index.html" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
             <h1><img src="logo-head.png"></img> Laravel Cheet Sheet</h1>
         </div>
-        
+				<script>
+			$(document).on("pageshow",function(){ // When entering pagetwo
+			  prettyPrint();
+			});
+		</script>
+		
         <div data-role="content">   
-		
-
-		
 	        	<ul data-role="listview">
 				
-					<li><a data-ajax="false" href="artisan.html">Artisan</a></li>
-					<li><a data-ajax="false" href="composer.html">Composer</a></li>
-					<li><a data-ajax="false" href="migrate.html">Migration</a></li>
-					<li><a data-ajax="false" href="packages.html">Packages</a></li>
-					<li><a data-ajax="false" href="seeds.html">Seed</a></li>
+					<li><a data-ajax="true" data-transition="flip" href="artisan.html">Artisan</a></li>
+					<li><a data-ajax="true" data-transition="flip" href="composer.html">Composer</a></li>
+					<li><a data-ajax="true" data-transition="flip" href="migrate.html">Migration</a></li>
+					<li><a data-ajax="true" data-transition="flip" href="packages.html">Packages</a></li>
+					<li><a data-ajax="true" data-transition="flip" href="seeds.html">Seed</a></li>
 				</ul>	        
 		</div>
 		
-
 		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
 			<div data-role="navbar">
 				<ul>
