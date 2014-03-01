@@ -7,7 +7,7 @@ $('.comments-toggle').on('click', function(event){
 prettyPrint();
 
 // For ajax calls + randomize to clear cache
-$(document).ready(function(){ var i = Math.random(); prettyPrint(); })
+$(document).ready(function(){ alert(); prettyPrint(); })
 
 // Shine up the HTML:: calls
 var $html_elements = $("span.pln:contains('HTML')").removeClass('pln').addClass('typ');
