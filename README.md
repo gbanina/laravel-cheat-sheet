@@ -1,6 +1,6 @@
-# PhoneGap Build Starter Application
+# PhoneGap Laravel Cheat Sheet
 
-> A Hello World application to get started with PhoneGap Build.
+> PhoneGap build of Laravel 4.* Cheat Sheet.
 
 ## Usage
 
